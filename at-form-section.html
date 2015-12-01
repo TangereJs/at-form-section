@@ -1,0 +1,27 @@
+<dom-module id="at-form-section">
+  <style>
+    .section-label {
+      font-size: 14px;
+      font-weight: bold;
+    }
+  </style>
+  <template>
+    <div>
+      <div class="section-label">{{label}}</div>
+      <hr/>
+    </div>
+  </template>
+  <script>
+    'use strict';
+    Polymer({
+      is: 'at-form-section',
+      properties: {
+        label: {
+          type: String,
+          value: ''
+        }
+      },
+      _scopeCssViaAttr: true
+    });
+  </script>
+</dom-module>
