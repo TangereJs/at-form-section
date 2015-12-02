@@ -4,10 +4,14 @@
       font-size: 14px;
       font-weight: bold;
     }
+
+    .hidden {
+      display: none;
+    }
   </style>
   <template>
-    <div>
-      <div class="section-label">{{label}}</div>
+    <div id="atFormSectionWrapper">
+      <div id="sectionLabel" class="section-label">{{label}}</div>
       <hr/>
     </div>
   </template>
@@ -19,13 +23,37 @@
         label: {
           type: String,
           value: ''
+        },
+        hideLabel: {
+          type: Boolean,
+          value: false,
+          observer: 'hideLabelChanged'
+        },
+        /**
+         * Hides the element. When hidden nothing is displayed for the element
+         * @property hide
+         * @type Boolean
+         * @default false
+         */
+        hide: {
+          type: Boolean,
+          value: false,
+          observer: 'hideChanged'
         }
       },
       _scopeCssViaAttr: true,
       $meta: [{
         title: 'Section',
         type: 'section'
-      }]
+      }],
+      hideChanged: function (newValue, oldValue) {
+        var wrapper = this.$.atFormSectionWrapper;
+        this.toggleClass('hidden', newValue, wrapper);
+      },
+      hideLabelChanged: function (newValue, oldValue) {
+        var label = this.$.sectionLabel;
+        this.toggleClass('hidden', newValue, label);
+      }
     });
   </script>
 </dom-module>
