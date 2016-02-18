@@ -1,18 +1,17 @@
-<dom-module id="at-form-section">
-  <style>
-    .section-label {
-      font-size: 14px;
-      font-weight: bold;
-    }
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../at-theme/at-theme.html">
 
-    .hidden {
-      display: none;
-    }
-  </style>
+<dom-module id="at-form-section">
   <template>
-    <div id="atFormSectionWrapper">
-      <div id="sectionLabel" class="section-label">{{label}}</div>
-      <hr/>
+    <style include="at-form-common"></style>
+    <style>
+      #label.section-label {
+        @apply(--paper-font-subhead);
+      }
+    </style>
+    <div id="atContainer">
+      <div id="label" class="section-label">{{label}}</div>
+      <hr id="labelHr" />
     </div>
   </template>
   <script>
@@ -41,18 +40,16 @@
           observer: 'hideChanged'
         }
       },
-      _scopeCssViaAttr: true,
       $meta: [{
         title: 'Section',
         type: 'section'
       }],
-      hideChanged: function (newValue, oldValue) {
-        var wrapper = this.$.atFormSectionWrapper;
+      hideChanged: function(newValue, oldValue) {
+        var wrapper = this.$.atContainer;
         this.toggleClass('hidden', newValue, wrapper);
       },
-      hideLabelChanged: function (newValue, oldValue) {
-        var label = this.$.sectionLabel;
-        this.toggleClass('hidden', newValue, label);
+      hideLabelChanged: function(newValue, oldValue) {
+        this.hideChanged(newValue, undefined);
       }
     });
   </script>
