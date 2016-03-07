@@ -21,7 +21,8 @@
       properties: {
         label: {
           type: String,
-          value: ''
+          value: '',
+          title: 'Label'
         },
         hideLabel: {
           type: Boolean,
@@ -37,7 +38,8 @@
         hide: {
           type: Boolean,
           value: false,
-          observer: 'hideChanged'
+          observer: 'hideChanged',
+          title: 'Field is invisible'
         }
       },
       $meta: [{
