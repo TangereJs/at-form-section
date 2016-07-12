@@ -1,9 +1,9 @@
 {
   "name": "at-form-section",
-  "version": "0.0.1.2",
+  "version": "0.0.1.3",
   "private": true,
   "dependencies": {
-    "polymer": "Polymer/polymer#master",
+    "tangere": "TangereJs/tangere#0.8-preview",
     "at-theme": "TangereJs/at-theme#0.8-preview"
   }
 }
