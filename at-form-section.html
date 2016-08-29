@@ -19,15 +19,26 @@
     Polymer({
       is: 'at-form-section',
       properties: {
+        /**
+         * Element's label
+         * @property label
+         * @type String
+         * @default ''
+         */
         label: {
           type: String,
           value: '',
           title: 'Label'
         },
+        /**
+         * When true label is not displayed
+         * @property hideLabel
+         * @type Boolean
+         * @default false
+         */
         hideLabel: {
           type: Boolean,
           value: false,
-          observer: 'hideLabelChanged',
           title: 'Do not show the label'
         },
         /**
@@ -39,21 +50,25 @@
         hide: {
           type: Boolean,
           value: false,
-          observer: 'hideChanged',
           title: 'Field is invisible'
         }
       },
+
+      observers: [
+        '_internalUpdateHiddenState(hideLabel, hide)'
+      ],
+
       $meta: [{
         title: 'Section',
         type: 'section'
       }],
-      hideChanged: function(newValue, oldValue) {
-        var wrapper = this.$.atContainer;
-        this.toggleClass('hidden', newValue, wrapper);
-      },
-      hideLabelChanged: function(newValue, oldValue) {
-        this.hideChanged(newValue, undefined);
+
+      _internalUpdateHiddenState: function(hideLabel, hide) {
+        var newValue = hideLabel || hide;
+        var container = this.$.atContainer;
+        this.toggleClass('hidden', newValue, container);
       }
+
     });
   </script>
 </dom-module>
