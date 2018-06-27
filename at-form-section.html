@@ -1,17 +1,16 @@
 <link rel="import" href="../tangere/tangere.html">
-<link rel="import" href="../at-theme/at-theme.html">
+<link rel="import" href="../at-core-style-classes/at-core-style-classes.html">
 
 <dom-module id="at-form-section">
   <template>
     <style include="at-form-common"></style>
-    <style>
+    <style include="at-core-style-classes">
       #label.section-label {
-        @apply(--paper-font-subhead);
+        @apply --paper-font-subhead;
       }
     </style>
     <div id="atContainer">
-      <div id="label" class="section-label">{{label}}</div>
-      <hr id="labelHr" />
+      <div id="label" class="section-label bb">{{label}}</div>
     </div>
   </template>
   <script>
