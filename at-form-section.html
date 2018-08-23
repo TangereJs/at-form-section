@@ -3,7 +3,12 @@
 
 <dom-module id="at-form-section">
   <template>
-    <style include="at-core-style-classes"></style>
+    <style include="at-core-style-classes">
+      :host {
+        display: block;
+        box-sizing: border-box;
+      }
+    </style>
     <div id="atContainer">
       <div id="label" class="font-subhead bb">{{label}}</div>
     </div>
